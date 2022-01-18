@@ -7,6 +7,7 @@ import java.util.Date;
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // TABLE, SEQUENCE, IDENTITY 중에 DB에 따라 하나 선택됨
     private Long id;
 
     @Column(name = "name")
@@ -25,6 +26,9 @@ public class Member {
 
     @Lob
     private String description;
+
+    @Transient // db에 반영되지 않음(컬럼 생성 x)
+    private int temp;
 
     public Member() {}
 
