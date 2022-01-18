@@ -1,12 +1,14 @@
 package hellojpa;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class JpaMain {
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
 
@@ -26,14 +28,14 @@ public class JpaMain {
 //            findMember.setName("HelloJPA");
 
             // jpql
-            List<Member> list = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(4)
-                    .getResultList();
-
-            for (Member member : list) {
-                System.out.println("member.name : " + member.getName());
-            }
+//            List<Member> list = em.createQuery("select m from Member as m", Member.class)
+//                    .setFirstResult(1)
+//                    .setMaxResults(4)
+//                    .getResultList();
+//
+//            for (Member member : list) {
+//                System.out.println("member.name : " + member.getName());
+//            }
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
